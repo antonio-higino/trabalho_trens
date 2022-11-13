@@ -1,0 +1,22 @@
+Seguindo a numeração do pdf do trabalho:
+
+região 0: x = 330
+          y = 30 a 150
+
+região 1: x = 600
+          y = 30 a 150
+
+região 2: x = 200 a 330
+          y = 150
+
+região 3: x = 330 a 470
+          y = 150
+
+região 4: x = 470 a 600
+          y = 150
+
+região 5: x = 600 a 740
+          y = 150
+
+região 6: x = 470
+          y = 150 a 270

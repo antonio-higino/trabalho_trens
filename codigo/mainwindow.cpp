@@ -10,7 +10,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Cria o trem com seu (ID, posição X, posição Y)
     trem1 = new Trem(1,60,30,ui->slider_trem1->value());
-    trem2 = new Trem(2,330,30,100);
+    trem2 = new Trem(2,330,30,ui->slider_trem2->value());
+    trem3 = new Trem(3,600,30,ui->slider_trem3->value());
+    trem4 = new Trem(4,200,150,ui->slider_trem4->value());
+    trem5 = new Trem(5,470,150,ui->slider_trem5->value());
 
     /*
      * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.
@@ -21,9 +24,15 @@ MainWindow::MainWindow(QWidget *parent) :
      */
     connect(trem1,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     connect(trem2,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
+    connect(trem3,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
+    connect(trem4,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
+    connect(trem5,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
 
-
-
+    trem1->start();
+    trem2->start();
+    trem3->start();
+    trem4->start();
+    trem5->start();
 }
 
 //Função que será executada quando o sinal UPDATEGUI for emitido
@@ -35,6 +44,15 @@ void MainWindow::updateInterface(int id, int x, int y){
     case 2: //Atualiza a posição do objeto da tela (quadrado) que representa o trem2
         ui->label_trem2->setGeometry(x,y,21,17);
         break;
+    case 3:
+        ui->label_trem3->setGeometry(x,y,21,17);
+        break;
+    case 4:
+        ui->label_trem4->setGeometry(x,y,21,17);
+        break;
+    case 5:
+        ui->label_trem5->setGeometry(x,y,21,17);
+        break;
     default:
         break;
     }
@@ -45,30 +63,57 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-/*
- * Ao clicar, trens começam execução
- */
-void MainWindow::on_pushButton_clicked()
-{
-    trem1->start();
-    trem2->start();
-}
-
-/*
- * Ao clicar, trens param execução
- */
-void MainWindow::on_pushButton_2_clicked()
-{
-    trem1->terminate();
-    trem2->terminate();
-}
-
 void MainWindow::on_slider_trem1_valueChanged(int value)
 {
-    if(value == 500){
-        trem1->mudarVelocidade(32000);
+    if(value == 200 && trem1->isRunning()){
+        trem1->terminate();
+    } else if (value < 200 && trem1->isRunning() != true) {
+        trem1->start();
     } else {
-        std::cout << value << std::endl;
         trem1->mudarVelocidade(value);
+    }
+}
+
+void MainWindow::on_slider_trem2_valueChanged(int value)
+{
+    if(value == 200 && trem2->isRunning()){
+        trem2->terminate();
+    } else if (value < 200 && trem2->isRunning() != true) {
+        trem2->start();
+    } else {
+        trem2->mudarVelocidade(value);
+    }
+}
+
+void MainWindow::on_slider_trem3_valueChanged(int value)
+{
+    if(value == 200 && trem3->isRunning()){
+        trem3->terminate();
+    } else if (value < 200 && trem3->isRunning() != true) {
+        trem3->start();
+    } else {
+        trem3->mudarVelocidade(value);
+    }
+}
+
+void MainWindow::on_slider_trem4_valueChanged(int value)
+{
+    if(value == 200 && trem4->isRunning()){
+        trem4->terminate();
+    } else if (value < 200 && trem4->isRunning() != true) {
+        trem4->start();
+    } else {
+        trem4->mudarVelocidade(value);
+    }
+}
+
+void MainWindow::on_slider_trem5_valueChanged(int value)
+{
+    if(value == 200 && trem5->isRunning()){
+        trem5->terminate();
+    } else if (value < 200 && trem5->isRunning() != true) {
+        trem5->start();
+    } else {
+        trem5->mudarVelocidade(value);
     }
 }

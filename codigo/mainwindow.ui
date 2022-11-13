@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>962</width>
-    <height>543</height>
+    <height>545</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -92,32 +92,6 @@
     </property>
     <property name="text">
      <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>320</y>
-      <width>99</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Ligar</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>390</y>
-      <width>98</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Parar</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_trilho4_2">
@@ -363,7 +337,7 @@
    <widget class="QSlider" name="slider_trem1">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>320</x>
       <y>310</y>
       <width>321</width>
       <height>31</height>
@@ -379,19 +353,19 @@
      <number>0</number>
     </property>
     <property name="maximum">
-     <number>500</number>
+     <number>200</number>
     </property>
     <property name="singleStep">
-     <number>25</number>
+     <number>10</number>
     </property>
     <property name="pageStep">
-     <number>25</number>
+     <number>10</number>
     </property>
     <property name="value">
-     <number>250</number>
+     <number>100</number>
     </property>
     <property name="sliderPosition">
-     <number>250</number>
+     <number>100</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -403,29 +377,203 @@
      <bool>false</bool>
     </property>
    </widget>
-   <zorder>label_trilho1</zorder>
-   <zorder>label_trilho2</zorder>
-   <zorder>label_trilho3</zorder>
-   <zorder>label_trilho4</zorder>
-   <zorder>label_trem1</zorder>
-   <zorder>pushButton</zorder>
-   <zorder>pushButton_2</zorder>
+   <widget class="QSlider" name="slider_trem2">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>340</y>
+      <width>321</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider::handle:horizontal {background: rgb(239, 41, 41)}</string>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>200</number>
+    </property>
+    <property name="singleStep">
+     <number>10</number>
+    </property>
+    <property name="pageStep">
+     <number>10</number>
+    </property>
+    <property name="value">
+     <number>100</number>
+    </property>
+    <property name="sliderPosition">
+     <number>100</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="invertedAppearance">
+     <bool>false</bool>
+    </property>
+    <property name="invertedControls">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QSlider" name="slider_trem3">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>370</y>
+      <width>321</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider::handle:horizontal {background: rgb(32, 74, 135)}</string>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>200</number>
+    </property>
+    <property name="singleStep">
+     <number>10</number>
+    </property>
+    <property name="pageStep">
+     <number>10</number>
+    </property>
+    <property name="value">
+     <number>100</number>
+    </property>
+    <property name="sliderPosition">
+     <number>100</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="invertedAppearance">
+     <bool>false</bool>
+    </property>
+    <property name="invertedControls">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QSlider" name="slider_trem4">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>400</y>
+      <width>321</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider::handle:horizontal {background: rgb(245, 121, 0)}</string>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>200</number>
+    </property>
+    <property name="singleStep">
+     <number>10</number>
+    </property>
+    <property name="pageStep">
+     <number>10</number>
+    </property>
+    <property name="value">
+     <number>100</number>
+    </property>
+    <property name="sliderPosition">
+     <number>100</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="invertedAppearance">
+     <bool>false</bool>
+    </property>
+    <property name="invertedControls">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QSlider" name="slider_trem5">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>430</y>
+      <width>321</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider::handle:horizontal {background: rgb(117, 80, 123)}</string>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>200</number>
+    </property>
+    <property name="singleStep">
+     <number>10</number>
+    </property>
+    <property name="pageStep">
+     <number>10</number>
+    </property>
+    <property name="value">
+     <number>100</number>
+    </property>
+    <property name="sliderPosition">
+     <number>100</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="invertedAppearance">
+     <bool>false</bool>
+    </property>
+    <property name="invertedControls">
+     <bool>false</bool>
+    </property>
+   </widget>
    <zorder>label_trilho4_2</zorder>
-   <zorder>label_trilho1_2</zorder>
+   <zorder>label_trilho2_3</zorder>
    <zorder>label_trilho2_2</zorder>
+   <zorder>label_trilho3</zorder>
+   <zorder>label_trilho1_5</zorder>
+   <zorder>label_trilho4_6</zorder>
+   <zorder>label_trilho4_5</zorder>
+   <zorder>label_trilho1_4</zorder>
+   <zorder>label_trilho4_4</zorder>
+   <zorder>label_trilho2</zorder>
+   <zorder>label_trilho4</zorder>
+   <zorder>label_trilho4_3</zorder>
+   <zorder>label_trilho1_3</zorder>
+   <zorder>label_trilho1</zorder>
+   <zorder>label_trilho1_2</zorder>
    <zorder>label_trem2</zorder>
    <zorder>label_trem3</zorder>
-   <zorder>label_trilho1_3</zorder>
-   <zorder>label_trilho4_3</zorder>
-   <zorder>label_trilho2_3</zorder>
-   <zorder>label_trilho1_4</zorder>
-   <zorder>label_trilho1_5</zorder>
-   <zorder>label_trilho4_4</zorder>
-   <zorder>label_trilho4_5</zorder>
-   <zorder>label_trilho4_6</zorder>
    <zorder>label_trem4</zorder>
    <zorder>label_trem5</zorder>
    <zorder>slider_trem1</zorder>
+   <zorder>slider_trem2</zorder>
+   <zorder>slider_trem3</zorder>
+   <zorder>slider_trem4</zorder>
+   <zorder>slider_trem5</zorder>
+   <zorder>label_trem1</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
