@@ -65,55 +65,25 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_slider_trem1_valueChanged(int value)
 {
-    if(value == 200 && trem1->isRunning()){
-        trem1->terminate();
-    } else if (value < 200 && trem1->isRunning() != true) {
-        trem1->start();
-    } else {
         trem1->mudarVelocidade(value);
-    }
 }
 
 void MainWindow::on_slider_trem2_valueChanged(int value)
 {
-    if(value == 200 && trem2->isRunning()){
-        trem2->terminate();
-    } else if (value < 200 && trem2->isRunning() != true) {
-        trem2->start();
-    } else {
         trem2->mudarVelocidade(value);
-    }
 }
 
 void MainWindow::on_slider_trem3_valueChanged(int value)
 {
-    if(value == 200 && trem3->isRunning()){
-        trem3->terminate();
-    } else if (value < 200 && trem3->isRunning() != true) {
-        trem3->start();
-    } else {
         trem3->mudarVelocidade(value);
-    }
 }
 
 void MainWindow::on_slider_trem4_valueChanged(int value)
 {
-    if(value == 200 && trem4->isRunning()){
-        trem4->terminate();
-    } else if (value < 200 && trem4->isRunning() != true) {
-        trem4->start();
-    } else {
         trem4->mudarVelocidade(value);
-    }
 }
 
 void MainWindow::on_slider_trem5_valueChanged(int value)
 {
-    if(value == 200 && trem5->isRunning()){
-        trem5->terminate();
-    } else if (value < 200 && trem5->isRunning() != true) {
-        trem5->start();
-    } else {
         trem5->mudarVelocidade(value);
-    }
 }
