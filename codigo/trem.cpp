@@ -11,6 +11,8 @@ pthread_mutex_t mutex5;
 pthread_mutex_t mutex6;
 
 pthread_mutex_t mutexd1;
+pthread_mutex_t mutexd2;
+pthread_mutex_t mutexd3;
 
 //Construtor
 Trem::Trem(int ID, int x, int y, int velocidade){
@@ -83,6 +85,15 @@ void Trem::run(){
                 }
                 //-------------
 
+                //deadlock 2
+                if(x == 580 && y == 30){
+                    pthread_mutex_lock(&mutexd2);
+                }
+                if(x == 450 && y == 150){
+                    pthread_mutex_unlock(&mutexd2);
+                }
+                //-------------
+
                 if(x == 350 && y == 150){
                     pthread_mutex_lock(&mutex0);
                 }
@@ -124,6 +135,14 @@ void Trem::run(){
             break;
         case 3:
             if(velocidade != 200){
+                //deadlock 3
+                if(x == 760 && y == 150){
+                    pthread_mutex_lock(&mutexd3);
+                }
+                if(x == 600 && y == 130){
+                    pthread_mutex_unlock(&mutexd3);
+                }
+                //-------------
                 if(x == 620 && y == 150){
                     pthread_mutex_lock(&mutex1);
                 }
@@ -185,6 +204,22 @@ void Trem::run(){
             break;
         case 5:
             if(velocidade != 200){
+                //deadlock 2
+                if(x == 490 && y == 270){
+                    pthread_mutex_lock(&mutexd2);
+                }
+                if(x == 620 && y == 150){
+                    pthread_mutex_unlock(&mutexd2);
+                }
+                //-------------
+                //deadlock 3
+                if(x == 470 && y == 170){
+                    pthread_mutex_lock(&mutexd3);
+                }
+                if(x == 740 && y == 170){
+                    pthread_mutex_unlock(&mutexd3);
+                }
+                //-------------
                 if(x == 470 && y == 170){
                     pthread_mutex_lock(&mutex4);
                 }
