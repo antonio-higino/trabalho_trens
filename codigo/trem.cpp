@@ -11,10 +11,6 @@ pthread_mutex_t mutex4;
 pthread_mutex_t mutex5;
 pthread_mutex_t mutex6;
 
-pthread_mutex_t mutexd1;
-pthread_mutex_t mutexd2;
-pthread_mutex_t mutexd3;
-
 sem_t sem1;
 sem_t sem2;
 sem_t sem3;
@@ -36,7 +32,6 @@ Trem::Trem(int ID, int x, int y, int velocidade){
         pthread_mutex_init(&mutex5, NULL);
         pthread_mutex_init(&mutex6, NULL);
 
-        pthread_mutex_init(&mutexd1, NULL);
         sem_init(&sem1, 0,2);
         sem_init(&sem2, 0,2);
         sem_init(&sem3, 0,2);
