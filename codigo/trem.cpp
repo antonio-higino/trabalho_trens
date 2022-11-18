@@ -1,6 +1,7 @@
 #include "trem.h"
 #include <QtCore>
 #include <pthread.h>
+#include <semaphore.h>
 
 pthread_mutex_t mutex0;
 pthread_mutex_t mutex1;
@@ -13,6 +14,11 @@ pthread_mutex_t mutex6;
 pthread_mutex_t mutexd1;
 pthread_mutex_t mutexd2;
 pthread_mutex_t mutexd3;
+
+sem_t sem1;
+sem_t sem2;
+sem_t sem3;
+sem_t semzone1;
 
 //Construtor
 Trem::Trem(int ID, int x, int y, int velocidade){
@@ -31,6 +37,11 @@ Trem::Trem(int ID, int x, int y, int velocidade){
         pthread_mutex_init(&mutex6, NULL);
 
         pthread_mutex_init(&mutexd1, NULL);
+        sem_init(&sem1, 0,2);
+        sem_init(&sem2, 0,2);
+        sem_init(&sem3, 0,2);
+
+        sem_init(&semzone1, 0,3);
     }
 }
 
@@ -42,12 +53,18 @@ void Trem::run(){
             if(velocidade != 200){
                 //deadlock 1
                 if(x == 310 && y == 30){
-                    pthread_mutex_lock(&mutexd1);
+                    sem_wait(&semzone1);
+                    sem_wait(&sem1);
+
                 }
                 if(x == 310 && y == 150){
-                    pthread_mutex_unlock(&mutexd1);
+                    sem_post(&semzone1);
+                    sem_post(&sem1);
+
                 }
                 //-------------
+
+
 
                 if(x == 310 && y == 30){
                     pthread_mutex_lock(&mutex0);
@@ -76,23 +93,50 @@ void Trem::run(){
             break;
         case 2: //Trem 2
             if(velocidade != 200){
+                //deadlock 2
+                if(x == 600 && y == 130){
+
+                }
+                if(x == 450 && y == 150){
+                    sem_post(&sem2);
+                }
+                //-------------
                 //deadlock 1
                 if(x == 490 && y == 150){
-                    pthread_mutex_lock(&mutexd1);
+
+                    sem_wait(&sem1);
+
                 }
                 if(x == 330 && y == 130){
-                    pthread_mutex_unlock(&mutexd1);
+                    sem_post(&semzone1);
+                    sem_post(&sem1);
+
                 }
                 //-------------
 
-                //deadlock 2
+
+
+                //deadlock 3
                 if(x == 580 && y == 30){
-                    pthread_mutex_lock(&mutexd2);
+                    sem_wait(&sem2);
+                    sem_wait(&sem3);
                 }
-                if(x == 450 && y == 150){
-                    pthread_mutex_unlock(&mutexd2);
+                if(x == 580 && y == 150){
+                    sem_post(&sem3);
                 }
                 //-------------
+
+                //deadlock zone
+                if(x == 600 && y == 130){
+
+                    sem_wait(&semzone1);
+                }
+                if(x == 450 && y == 150){
+                    sem_post(&semzone1);
+
+
+                }
+                //------------------------
 
                 if(x == 350 && y == 150){
                     pthread_mutex_lock(&mutex0);
@@ -137,10 +181,10 @@ void Trem::run(){
             if(velocidade != 200){
                 //deadlock 3
                 if(x == 760 && y == 150){
-                    pthread_mutex_lock(&mutexd3);
+                    sem_wait(&sem3);
                 }
                 if(x == 600 && y == 130){
-                    pthread_mutex_unlock(&mutexd3);
+                    sem_post(&sem3);
                 }
                 //-------------
                 if(x == 620 && y == 150){
@@ -170,6 +214,39 @@ void Trem::run(){
             break;
         case 4:
             if(velocidade != 200){
+                //deadlock 2
+                if(x == 310 && y == 150){
+
+                }
+                if(x == 470 && y == 170){
+                    sem_post(&sem2);
+                }
+                //-------------
+
+                //deadlock 1
+                if(x == 200 && y == 170){
+
+                    sem_wait(&sem2);
+                    sem_wait(&sem1);
+                }
+                if(x == 350 && y == 150){
+
+                    sem_post(&sem1);
+
+                }
+                //--------
+
+                //zone 1
+                 if(x == 200 && y ==180){
+                     sem_wait(&semzone1);
+                 }
+                if(x == 450 && y ==270){
+                    sem_post(&semzone1);
+                }
+                //-------------
+
+
+
                 if(x == 200 && y == 170){
                     pthread_mutex_lock(&mutex2);
                 }
@@ -206,20 +283,26 @@ void Trem::run(){
             if(velocidade != 200){
                 //deadlock 2
                 if(x == 490 && y == 270){
-                    pthread_mutex_lock(&mutexd2);
+                    sem_wait(&semzone1);
+                    sem_wait(&sem2);
+
                 }
-                if(x == 620 && y == 150){
-                    pthread_mutex_unlock(&mutexd2);
+                if(x == 490 && y == 150){
+                    sem_post(&semzone1);
+                    sem_post(&sem2);
+
                 }
                 //-------------
                 //deadlock 3
                 if(x == 470 && y == 170){
-                    pthread_mutex_lock(&mutexd3);
+                    sem_wait(&sem3);
                 }
-                if(x == 740 && y == 170){
-                    pthread_mutex_unlock(&mutexd3);
+                if(x == 620 && y == 150){
+                    sem_post(&sem3);
                 }
                 //-------------
+
+
                 if(x == 470 && y == 170){
                     pthread_mutex_lock(&mutex4);
                 }
