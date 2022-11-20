@@ -23,7 +23,8 @@ Trem::Trem(int ID, int x, int y, int velocidade){
     this->y = y;
     this->velocidade = velocidade;
 
-    if(ID == 1){
+    //garantir que só inicializa uma vez
+    if(ID==1){
         sem_init(&sem0, 0,1);
         sem_init(&sem1, 0,1);
         sem_init(&sem2, 0,1);
@@ -31,13 +32,83 @@ Trem::Trem(int ID, int x, int y, int velocidade){
         sem_init(&sem4, 0,1);
         sem_init(&sem5, 0,1);
         sem_init(&sem6, 0,1);
-
         sem_init(&semdeadlock1, 0,2);
         sem_init(&semdeadlock2, 0,2);
         sem_init(&semdeadlock3, 0,2);
-
         sem_init(&semdeadlockzone1, 0,3);
     }
+    //---------------------------
+
+    //tratar casos em que o trem inicializa na região critica
+
+    if(ID == 1){        
+        if((x == 320 && y == 30)||(x == 330 && y >= 30 && y<=150)){
+            sem_wait(&sem0);
+            sem_wait(&semdeadlock1);
+        }
+        if((x == 330 && y == 140)||(y == 150 && x >= 190 && x<=330)){
+            sem_wait(&sem2);
+            sem_wait(&semdeadlock1);
+        }
+
+    }else if(ID == 2){
+        if((x == 340 && y == 150)||(x == 330 && y >= 30 && y<=150)){
+            sem_wait(&sem0);
+            sem_wait(&semdeadlock1);
+        }
+        if((x == 590 && y == 30)||(x == 600 && y >= 30 && y<=150)){
+            sem_wait(&sem1);
+            sem_wait(&semdeadlock3);
+        }
+        if((x == 330 && y == 140)||(y == 150 && x >= 330 && x<=480)){
+            sem_wait(&sem3);
+            sem_wait(&semdeadlock1);
+        }
+        if((x == 600 && y == 140)||(y == 150 && x >= 460 && x<=600)){
+            sem_wait(&sem4);
+            sem_wait(&semdeadlock2);
+        }
+
+    }else if(ID == 3){
+        if((x == 610 && y == 150)||(x == 600 && y >= 30 && y<=150)){
+            sem_wait(&sem1);
+            sem_wait(&semdeadlock3);
+        }
+        if((x == 600 && y == 140)||(y == 150 && x >= 600 && x<=750)){
+            sem_wait(&sem5);
+            sem_wait(&semdeadlock3);
+        }
+    }else if(ID == 4){
+        if((x == 200 && y == 160)||(y == 150 && x >= 200 && x<=340)){
+            sem_wait(&sem2);
+            sem_wait(&semdeadlock1);
+        }
+        if((x == 470 && y == 160)||(y == 150 && x >= 320 && x<=470)){
+            sem_wait(&sem3);
+            sem_wait(&semdeadlock2);
+        }
+        if((x == 460 && y == 150)||(x == 470 && y >= 150 && y<=270)){
+            sem_wait(&sem6);
+            //sem_wait(&semdeadlock2);
+        }
+
+    }else if(ID == 5){
+        if((x == 470 && y == 160)||(y == 150 && x >= 470 && x<=610)){
+            sem_wait(&sem4);
+            sem_wait(&semdeadlock3);
+        }
+        if((x == 740 && y == 160)||(y == 150 && x >= 590 && x<=740)){
+            sem_wait(&sem5);
+            //sem_wait(&semdeadlock3);
+        }
+        if((x == 480 && y == 270)||(x == 470 && y >= 150 && y<=270)){
+            sem_wait(&sem6);
+            //sem_wait(&semdeadlock2);
+        }
+
+    }
+
+    //----------------------------------------------------------------
 }
 
 //Função a ser executada após executar trem->START
