@@ -89,7 +89,6 @@ Trem::Trem(int ID, int x, int y, int velocidade){
         }
         if((x == 460 && y == 150)||(x == 470 && y >= 150 && y<=270)){
             sem_wait(&sem6);
-            //sem_wait(&semdeadlock2);
         }
 
     }else if(ID == 5){
@@ -99,11 +98,9 @@ Trem::Trem(int ID, int x, int y, int velocidade){
         }
         if((x == 740 && y == 160)||(y == 150 && x >= 590 && x<=740)){
             sem_wait(&sem5);
-            //sem_wait(&semdeadlock3);
         }
         if((x == 480 && y == 270)||(x == 470 && y >= 150 && y<=270)){
             sem_wait(&sem6);
-            //sem_wait(&semdeadlock2);
         }
 
     }
